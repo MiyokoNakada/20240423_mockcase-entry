@@ -16,6 +16,7 @@
         <h1 class="header-ttl">
             Atte
         </h1>
+        @if (Auth::check())
         <nav class="header-navi">
             <ul class="header-navi__list">
                 <li>ホーム</li>
@@ -23,6 +24,7 @@
                 <li>ログアウト</li>
             </ul>
         </nav>
+        @endif
     </header>
 
     <main>

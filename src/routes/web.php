@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AttendanceController::class, 'index']);
-Route::post('/workstart', [AttendanceController::class, 'workStart']);
-Route::post('/workfinish', [AttendanceController::class, 'workFinish']);
-Route::post('/breakstart', [AttendanceController::class, 'breakStart']);
-Route::post('/breakfinish', [AttendanceController::class, 'breakFinish']);
+Route::middleware('auth')->group(
+    function () {
+        Route::get('/', [AttendanceController::class, 'index'])->name('index');
+        Route::post('/workstart', [AttendanceController::class, 'workStart']);
+        Route::post('/workfinish', [AttendanceController::class, 'workFinish']);
+        Route::post('/reststart', [AttendanceController::class, 'restStart']);
+        Route::post('/restfinish', [AttendanceController::class, 'restFinish']);
 
-Route::get('/attendance', [AttendanceController::class, 'attendance']);
-Route::post('/attendance/before', [AttendanceController::class, 'beforeDate']);
-Route::post('/attendance/next', [AttendanceController::class, 'nextDate']);
+        Route::get('/attendance', [AttendanceController::class, 'attendance']);
+        Route::post('/attendance/before', [AttendanceController::class, 'beforeDate']);
+        Route::post('/attendance/next', [AttendanceController::class, 'nextDate']);
+    }
+);

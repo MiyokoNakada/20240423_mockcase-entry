@@ -13,19 +13,23 @@
     </div>
 
     <div class="attedance-record">
+        
         <div class="work-start">
             <form class="work-start__form" action="/workstart" method="POST">
                 @csrf
-                <button class="attedance-record__btn" type="submit">勤務開始</button>
+                {{-- ログインしているユーザーのIDを取得してhiddenで送る --}}
+                {{-- <input type="hidden" name="user_id" value="{{ Auth::id() }}">--}}
+                <button class="attedance-record__btn" type="submit" 
+                 >勤務開始</button>
             </form>
         </div>
         <div class="work-finish">
             <button class="attedance-record__btn" type="submit">勤務終了</button>
         </div>
-        <div class="break-start">
+        <div class="rest-start">
             <button class="attedance-record__btn" type="submit">休憩開始</button>
         </div>
-        <div class="break-finish">
+        <div class="rest-finish">
             <button class="attedance-record__btn" type="submit">休憩終了</button>
         </div>
     </div>

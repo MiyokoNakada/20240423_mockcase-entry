@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('breaks', function (Blueprint $table) {
+        Schema::create('rests', function (Blueprint $table) {
             $table->id();
             $table->foreignID('user_id')->constrained()->cascadeOnDelete();
             $table->foreignID('attendance_id')->constrained()->cascadeOnDelete();
-            $table->dateTime('break_start');
-            $table->dateTime('break_finish')->nullable();
+            $table->dateTime('rest_start');
+            $table->dateTime('rest_finish')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('breaks');
+        Schema::dropIfExists('rests');
     }
 };
