@@ -1,6 +1,6 @@
-* {
+/* * {
     border: salmon solid 0.5px;
-}
+} */
 
 html,
 body {
@@ -14,7 +14,7 @@ main{
 
 /* ヘッダー */
 .header {
-    height: 100px;
+    height: 10vh;
     padding: 10px 50px;
     display: flex;
     justify-content: space-between;
@@ -41,7 +41,7 @@ main{
 
 /* フッター */
 footer {
-    height: 50px;
+    height: 8vh;
     display: flex;
     justify-content: center;
     align-items: center;

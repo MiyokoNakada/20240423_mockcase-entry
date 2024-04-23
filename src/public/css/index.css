@@ -1,4 +1,38 @@
+.attendance-content {
+    height: 82vh;
+}
+
+.attendance-ttl{
+    padding-top: 20px;
+}
 .attendance-ttl__text{
     text-align: center;
     font-size: 24px;
+}
+
+.attedance-record{
+    height: 60vh;
+    width: 70vw;
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+        grid-template-rows:30vh 30vh;
+        grid-template-columns: 1fr 1fr;
+}
+
+.work-start{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.attedance-record__btn{
+    width: 32vw;
+    height: 25vh;
+    background-color: white;
+    margin: 2.5vh auto;
+    font-size: larger;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }

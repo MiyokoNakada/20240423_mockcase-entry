@@ -10,4 +10,9 @@ class AttendanceController extends Controller
     public function index(){
         return view ('index');
     }
+
+    //勤務開始
+    public function workStart(){
+        return view('index');
+    }
 }
