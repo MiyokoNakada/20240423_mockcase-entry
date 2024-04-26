@@ -1,0 +1,12 @@
+.attendance-content {
+    height: 82vh;
+}
+
+.attendance-ttl {
+    padding-top: 20px;
+}
+
+.attendance-ttl__text {
+    text-align: center;
+    font-size: 24px;
+}

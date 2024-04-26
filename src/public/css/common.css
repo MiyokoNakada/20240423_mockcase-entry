@@ -7,7 +7,7 @@ body {
     height: 100%;
 }
 
-main{
+main {
     background-color: rgb(240, 240, 240);
 }
 
@@ -21,9 +21,10 @@ main{
     align-items: center;
 }
 
-.header-ttl{
+.header-ttl {
     font-size: 32px;
 }
+
 .header-navi {
     height: fit-content;
 }
@@ -38,6 +39,17 @@ main{
     font-weight: bold;
 }
 
+.header-navi__link{
+    text-decoration: none;
+}
+
+.header-nav__button {
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+}
+
 
 /* フッター */
 footer {
@@ -45,4 +57,5 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }

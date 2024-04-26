@@ -19,9 +19,21 @@
         @if (Auth::check())
         <nav class="header-navi">
             <ul class="header-navi__list">
-                <li>ホーム</li>
-                <li>日付一覧</li>
-                <li>ログアウト</li>
+                <li>
+                    <a class="header-navi__link" href="/">ホーム</a>
+                </li>
+                <li>
+                    <form action="/attendance" method="get">
+                        @csrf
+                        <button class="header-nav__button">日付一覧</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button class="header-nav__button">ログアウト</button>
+                    </form>
+                </li>
             </ul>
         </nav>
         @endif

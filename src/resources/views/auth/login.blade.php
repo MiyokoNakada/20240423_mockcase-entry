@@ -15,12 +15,24 @@
         <form class="login-form__form" action="/login" method="post">
             @csrf
             <div class="login-form__item">
-                <input type="email" name="email" value="email" placeholder="メールアドレス">
+                <input type="email" name="email" placeholder="メールアドレス">
+                <div class="form__error">
+                    @error('email')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="login-form__item">
-                <input type="password" name="password" value="password" placeholder="パスワード">
+                <input type="password" name="password" placeholder="パスワード">
+                <div class="form__error">
+                    @error('password')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
-            <input class="login-form__btn" type="submit" value="ログイン">
+            <div class="login-form__submit">
+                <input class="login-form__btn" type="submit" value="ログイン">
+            </div>
         </form>
     </div>
     <div class="register-link">

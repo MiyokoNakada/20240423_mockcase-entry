@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\RecordController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(
     function () {
-        Route::get('/', [AttendanceController::class, 'index'])->name('index');
-        Route::post('/workstart', [AttendanceController::class, 'workStart']);
-        Route::post('/workfinish', [AttendanceController::class, 'workFinish']);
-        Route::post('/reststart', [AttendanceController::class, 'restStart']);
-        Route::post('/restfinish', [AttendanceController::class, 'restFinish']);
+        Route::get('/', [AuthController::class, 'index'])->name('index');
+        Route::post('/workstart', [RecordController::class, 'workStart']);
+        Route::post('/workfinish', [RecordController::class, 'workFinish']);
+        Route::post('/reststart', [RecordController::class, 'restStart']);
+        Route::post('/restfinish', [RecordController::class, 'restFinish']);
 
         Route::get('/attendance', [AttendanceController::class, 'attendance']);
         Route::post('/attendance/before', [AttendanceController::class, 'beforeDate']);
