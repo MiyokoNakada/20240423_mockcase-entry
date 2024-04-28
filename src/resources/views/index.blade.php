@@ -12,24 +12,36 @@
         </h2>
     </div>
 
-    <div class="attedance-record">
+    <div class="attendance-record">
 
         <div class="work-start">
             <form class="work-start__form" action="/workstart" method="POST">
                 @csrf
-                {{-- ログインしているユーザーのIDを取得してhiddenで送る --}}
-                {{-- <input type="hidden" name="user_id" value="{{ Auth::id() }}">--}}
-                <button class="attedance-record__btn" type="submit">勤務開始</button>
+                <button class="attendance-record__btn" type="submit" @if (session('work_started')==1) disabled @endif>
+                    勤務開始
+                </button>
+
             </form>
         </div>
         <div class="work-finish">
-            <button class="attedance-record__btn" type="submit">勤務終了</button>
+            <form class="work-finish__form" action="/workfinish" method="POST">
+                @csrf
+                <button class="attendance-record__btn" type="submit" @if (session('work_finished')!=1) disabled @endif>
+                    勤務終了
+                </button>
+            </form>
         </div>
         <div class="rest-start">
-            <button class="attedance-record__btn" type="submit">休憩開始</button>
+            <form class="rest-start__form" action="/reststart" method="POST">
+                @csrf
+                <button class="attendance-record__btn" type="submit" @if (session('rest_started')!=1) disabled @endif>休憩開始</button>
+            </form>
         </div>
         <div class="rest-finish">
-            <button class="attedance-record__btn" type="submit">休憩終了</button>
+            <form class="rest-finish__form" action="/restfinish" method="POST">
+                @csrf
+                <button class="attendance-record__btn" type="submit" @if (session('rest_finished')!=1) disabled @endif>休憩終了</button>
+            </form>
         </div>
     </div>
 
