@@ -19,13 +19,17 @@ class RecordController extends Controller
         $attendance->work_start = Carbon::now();
         $attendance->save();
 
+        // 勤務ステータスを保存
+        $user->work_status = 'work_started'; 
+        $user->save();
+
         // 各ボタンの状態を設定
         // $request->session()->flush();
-        $request->session()->put('work_started', True); //inactive
-        $request->session()->put('work_finished', True); //active
-        $request->session()->put('rest_started', True); //active
-        $request->session()->put('rest_finished', False); //inactive
-        //   dd($request);
+        // $request->session()->put('work_started', True); //inactive
+        // $request->session()->put('work_finished', True); //active
+        // $request->session()->put('rest_started', True); //active
+        // $request->session()->put('rest_finished', False); //inactive
+        
         return redirect()->route('index');
     }
 
@@ -40,13 +44,17 @@ class RecordController extends Controller
         if ($attendance) {
             $attendance->work_finish = Carbon::now();
             $attendance->save();
+
+            // 勤務ステータスを保存
+            $user->work_status = 'work_finished';
+            $user->save();
         }
 
-        // 各ボタンの状態を設定
-        $request->session()->put('work_started', False); //active
-        $request->session()->put('work_finished', False); //inactive
-        $request->session()->put('rest_started', False); //inactive
-        $request->session()->put('rest_finished', False); //inactive
+        // // 各ボタンの状態を設定
+        // $request->session()->put('work_started', False); //active
+        // $request->session()->put('work_finished', False); //inactive
+        // $request->session()->put('rest_started', False); //inactive
+        // $request->session()->put('rest_finished', False); //inactive
 
         return redirect()->route('index');
     }
@@ -62,11 +70,15 @@ class RecordController extends Controller
         $rest->rest_start = Carbon::now();
         $rest->save();
 
-        // 各ボタンの状態を設定
-        $request->session()->put('work_started', True); //inactive
-        $request->session()->put('work_finished', False); //inactive
-        $request->session()->put('rest_started', False); //inactive
-        $request->session()->put('rest_finished', True); //active
+        // 勤務ステータスを保存
+        $user->work_status = 'rest_started';
+        $user->save();
+
+        // // 各ボタンの状態を設定
+        // $request->session()->put('work_started', True); //inactive
+        // $request->session()->put('work_finished', False); //inactive
+        // $request->session()->put('rest_started', False); //inactive
+        // $request->session()->put('rest_finished', True); //active
 
         return redirect()->route('index');
     }
@@ -81,13 +93,17 @@ class RecordController extends Controller
         if ($latestRest) {
             $latestRest->rest_finish = Carbon::now();
             $latestRest->save();
+
+            // 勤務ステータスを保存
+            $user->work_status = 'rest_finished';
+            $user->save();
         }
 
-        // 各ボタンの状態を設定
-        $request->session()->put('work_started', True); //inactive
-        $request->session()->put('work_finished', True); //active
-        $request->session()->put('rest_started', True); //active
-        $request->session()->put('rest_finished', False); //inactive
+        // // 各ボタンの状態を設定
+        // $request->session()->put('work_started', True); //inactive
+        // $request->session()->put('work_finished', True); //active
+        // $request->session()->put('rest_started', True); //active
+        // $request->session()->put('rest_finished', False); //inactive
 
         return redirect()->route('index');
     }

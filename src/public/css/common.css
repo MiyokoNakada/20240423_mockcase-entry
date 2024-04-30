@@ -41,6 +41,7 @@ main {
 
 .header-navi__link{
     text-decoration: none;
+    cursor: pointer;
 }
 
 .header-nav__button {
@@ -48,6 +49,7 @@ main {
     font-size: 16px;
     font-weight: bold;
     background-color: white;
+    cursor: pointer;
 }
 
 

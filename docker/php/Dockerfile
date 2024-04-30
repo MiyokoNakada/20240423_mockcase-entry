@@ -10,4 +10,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && mv composer.phar /usr/local/bin/composer \
   && composer self-update
 
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+
 WORKDIR /var/www

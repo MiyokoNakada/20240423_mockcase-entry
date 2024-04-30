@@ -25,7 +25,5 @@ Route::middleware('auth')->group(
         Route::post('/restfinish', [RecordController::class, 'restFinish']);
 
         Route::get('/attendance', [AttendanceController::class, 'attendance']);
-        Route::post('/attendance/before', [AttendanceController::class, 'beforeDate']);
-        Route::post('/attendance/next', [AttendanceController::class, 'nextDate']);
     }
 );
