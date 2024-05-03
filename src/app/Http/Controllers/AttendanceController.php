@@ -21,7 +21,7 @@ class AttendanceController extends Controller
         foreach ($attendanceLists as $attendanceList) {
             // 勤務開始時間と勤務終了時間をDateTimeオブジェクトに変換
             $workStart = new \DateTime($attendanceList['work_start']);
-            
+
             if (!empty($attendanceList['work_finish'])) {
                 $workFinish = new \DateTime($attendanceList['work_finish']);
 
@@ -41,20 +41,7 @@ class AttendanceController extends Controller
                 $totalRestDuration += ($restDuration->h * 3600) + ($restDuration->i * 60) + $restDuration->s;
             }
 
-            // 全体の勤務時間ー休憩時間
-            $effectiveWorkSeconds = $totalWorkSeconds - $totalRestDuration;
-            if ($effectiveWorkSeconds > 0) {
-                $hours = floor($effectiveWorkSeconds / 3600);
-                $minutes = floor(($effectiveWorkSeconds % 3600) / 60);
-                $seconds = $effectiveWorkSeconds % 60;
-                $effectiveWorkDuration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
-                $attendanceList->work_duration = $effectiveWorkDuration;
-            } else {
-                $attendanceList->work_duration =
-                    '00:00:00';
-            }
-
-            // 10秒単位で切り捨て
+            // 勤務開始、終了10秒単位で切り捨て
             $workStartTimestamp = floor($workStart->getTimestamp() / 10) * 10;
             $workStartObj = new \DateTime('@' . $workStartTimestamp);
             $workStartObj->setTimezone(new \DateTimeZone('Asia/Tokyo'));
@@ -73,6 +60,20 @@ class AttendanceController extends Controller
             $seconds = $truncatedRestDuration % 60;
             $formattedRestDuration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
             $attendanceList->rest_duration = $formattedRestDuration;
+
+            // 全体の勤務時間ー休憩時間
+            $effectiveWorkSeconds = $totalWorkSeconds - $totalRestDuration;
+            $effectiveWorkSeconds = floor($effectiveWorkSeconds / 10) * 10;
+            if ($effectiveWorkSeconds > 0) {
+                $hours = floor($effectiveWorkSeconds / 3600);
+                $minutes = floor(($effectiveWorkSeconds % 3600) / 60);
+                $seconds = $effectiveWorkSeconds % 60;
+                $effectiveWorkDuration = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+                $attendanceList->work_duration = $effectiveWorkDuration;
+            } else {
+                $attendanceList->work_duration =
+                    '00:00:00';
+            }
         }
         return view('attendance', compact('attendanceLists', 'date'));
     }

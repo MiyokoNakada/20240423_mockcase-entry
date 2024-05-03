@@ -43,7 +43,7 @@
             @endforeach
         </table>
         <div class="attendance-table__pagenation">
-            {{ $attendanceLists->links('vendor.pagination.bootstrap-4') }}
+            {{ $attendanceLists->appends(['date' => $date])->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 
