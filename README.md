@@ -42,7 +42,8 @@ php artisan migrate
 - MySQL8.0.36
 
 ## ER図
-![ER_tables]
+![ER_Atte_tables](https://github.com/MiyokoNakada/20240423_mockcase-entry/assets/159742835/4b3eaeea-127c-437f-a2ed-e257277fb17d)
+
 
 ## URL
 - 開発環境：http://localhost/
