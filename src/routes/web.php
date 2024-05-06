@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(
+
+Route::middleware('verified')->group(
     function () {
         Route::get('/', [AuthController::class, 'index'])->name('index');
         Route::post('/workstart', [RecordController::class, 'workStart']);
         Route::post('/workfinish', [RecordController::class, 'workFinish']);
         Route::post('/reststart', [RecordController::class, 'restStart']);
         Route::post('/restfinish', [RecordController::class, 'restFinish']);
-
         Route::get('/attendance', [AttendanceController::class, 'attendance']);
     }
 );

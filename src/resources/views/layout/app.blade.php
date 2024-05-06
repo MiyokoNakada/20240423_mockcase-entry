@@ -29,6 +29,12 @@
                     </form>
                 </li>
                 <li>
+                    <form action="/employee" method="get">
+                        @csrf
+                        <button class="header-nav__button">従業員一覧</button>
+                    </form>
+                </li>
+                <li>
                     <form action="/logout" method="post">
                         @csrf
                         <button class="header-nav__button">ログアウト</button>

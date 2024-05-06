@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Attendance;
-use App\Models\User;
-use App\Models\Rest;
 
 class AttendanceController extends Controller
 {
     //attendanceページ表示
     public function attendance(Request $request)
     {
-        // $userId = Auth::id();
-        // $userName = User::find($userId);
+        
         $date = $request->input('date', now()->toDateString());
         $attendanceLists = Attendance::with('user', 'rests')->whereDate('work_start', $date)->paginate(5);
 
