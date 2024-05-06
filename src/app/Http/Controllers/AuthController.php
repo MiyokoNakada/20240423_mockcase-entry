@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class AuthController extends Controller
 {
+
     //indexページ表示
     public function index(Request $request)
     {

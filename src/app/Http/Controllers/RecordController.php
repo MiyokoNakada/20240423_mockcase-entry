@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Attendance;
 use App\Models\Rest;
@@ -18,17 +17,9 @@ class RecordController extends Controller
         $attendance->user_id = $user->id;
         $attendance->work_start = Carbon::now();
         $attendance->save();
-
-        // 勤務ステータスを保存
-        $user->work_status = 'work_started'; 
+        
+        $user->work_status = 'work_started'; // 勤務ステータスを保存
         $user->save();
-
-        // 各ボタンの状態を設定
-        // $request->session()->flush();
-        // $request->session()->put('work_started', True); //inactive
-        // $request->session()->put('work_finished', True); //active
-        // $request->session()->put('rest_started', True); //active
-        // $request->session()->put('rest_finished', False); //inactive
         
         return redirect()->route('index');
     }
@@ -44,9 +35,8 @@ class RecordController extends Controller
         if ($attendance) {
             $attendance->work_finish = Carbon::now();
             $attendance->save();
-
-            // 勤務ステータスを保存
-            $user->work_status = 'work_finished';
+            
+            $user->work_status = 'work_finished'; // 勤務ステータスを保存
             $user->save();
         }
      
@@ -63,9 +53,8 @@ class RecordController extends Controller
         $rest->attendance_id = $latestAttendance->id;
         $rest->rest_start = Carbon::now();
         $rest->save();
-
-        // 勤務ステータスを保存
-        $user->work_status = 'rest_started';
+       
+        $user->work_status = 'rest_started';  // 勤務ステータスを保存
         $user->save();
 
         return redirect()->route('index');
@@ -81,9 +70,8 @@ class RecordController extends Controller
         if ($latestRest) {
             $latestRest->rest_finish = Carbon::now();
             $latestRest->save();
-
-            // 勤務ステータスを保存
-            $user->work_status = 'rest_finished';
+            
+            $user->work_status = 'rest_finished'; // 勤務ステータスを保存
             $user->save();
         }
 
