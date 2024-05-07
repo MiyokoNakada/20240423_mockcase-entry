@@ -15,7 +15,8 @@ services:
         build: ./docker/php
         volumes:
             - ./src:/var/www/
-
+        entrypoint: entrypoint: sh -c "/usr/sbin/cron -f & php-fpm"
+        
     mysql:
         image: mysql:8.0.36
         environment:
