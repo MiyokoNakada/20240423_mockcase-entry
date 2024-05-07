@@ -25,5 +25,8 @@ Route::middleware('verified')->group(
         Route::post('/reststart', [RecordController::class, 'restStart']);
         Route::post('/restfinish', [RecordController::class, 'restFinish']);
         Route::get('/attendance', [AttendanceController::class, 'attendance']);
+        Route::get('/employee', [AttendanceController::class, 'employee']);
+        Route::match(['get', 'post'], '/employee/attendance', [AttendanceController::class, 'employeeAttendance']);
     }
 );
+
