@@ -13,9 +13,6 @@ RUN curl -sS https://getcomposer.org/installer | php \
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 RUN apt update && apt install -y cron
-COPY start-scheduler.sh /usr/local/bin/start-scheduler.sh
-RUN chmod +x /usr/local/bin/start-scheduler.sh
-COPY crontab /etc/cron.d/laravel-scheduler
 RUN service cron start
 
 WORKDIR /var/www
