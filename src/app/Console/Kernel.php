@@ -14,8 +14,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // 毎日0時にジョブを実行
-        $schedule->job(new EndAndStartWork)->everyMinute();
-        // dailyAt('00:00');
+        $schedule->job(new EndAndStartWork)->dailyAt('00:00');
     }
 
     /**
