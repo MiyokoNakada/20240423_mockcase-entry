@@ -17,9 +17,5 @@
             メールの内容を確認して、アカウントの登録を完了してください。
         </p>
     </div>
-    <div class="login-link">
-        <p>ログイン画面へ</p>
-        <a href="/login">ログイン</a>
-    </div>
 </div>
 @endsection
