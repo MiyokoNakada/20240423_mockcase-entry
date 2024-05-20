@@ -130,15 +130,27 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    git clone git@github.com:MiyokoNakada/20240423_mockcase-entry.git
    cd 20240423_mockcase-entry
    ```
-4. `nginx/default.conf` ファイルを編集
-    ```nginx/default.conf
+4. `docker/nginx/default.conf` ファイルを編集
+    ```
     server_name 3.27.233.206;
     ```
-5. Docker コンテナをビルドして起動
+5. `docker-compose.prod.yml` ファイルを編集
+    ```
+    phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=RDS_endpoint
+      - PMA_USER=RDS_user
+      - PMA_PASSWORD=RDS_password
+    ports:
+      - 8080:80
+    ```
+6. Docker コンテナをビルドして起動
    ```sh
    docker-compose -f docker-compose.prod.yml up --build -d
    ```
-6. .env ファイルを作成し、必要な環境変数を設定
+7. .env ファイルを作成し、必要な環境変数を設定
 
    ```sh
    cp src/.env.example src/.env
@@ -165,18 +177,18 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    ```
    ※メールに関する設定項目もそれぞれの環境に合わせて変更
 
-7. PHP コンテナにログイン後、composer のインストール
+8. PHP コンテナにログイン後、composer のインストール
    ```sh
    docker-compose -f docker-compose.prod.yml exec php bash
    ```
    ```php
    composer install
    ```
-8. アプリケーションキーの作成
+9. アプリケーションキーの作成
    ```php
    php artisan key:generate
    ```
-9. マイグレーションの実行
+10. マイグレーションの実行
    ```php
    php artisan migrate
    ```

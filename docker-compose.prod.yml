@@ -21,8 +21,8 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOST=mockcase-entry-database1.cf84csggk1dn.ap-southeast-2.rds.amazonaws.com
-      - PMA_USER=admin
-      - PMA_PASSWORD=Entry_Coach1
+      - PMA_HOST=RDS_endpoint
+      - PMA_USER=RDS_user
+      - PMA_PASSWORD=RDS_password
     ports:
       - 8080:80
