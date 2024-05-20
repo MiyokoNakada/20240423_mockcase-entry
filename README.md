@@ -9,7 +9,7 @@
 
 ## URL
 
-- 本番環境：http://3.27.233.206/  
+- 本番環境：http://your_ec2_instance_public_ip/  
   （上記 URL でログイン後にトップページに遷移します)
 - 開発環境：http://localhost/
 - phpMyAdmin：http://localhost:8080/
@@ -134,7 +134,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    ```
 4. `docker/nginx/default.conf` ファイルを編集
    ```
-   server_name 3.27.233.206;
+   server_name your_ec2_instance_public_ip;
    ```
 5. `docker-compose.prod.yml` ファイルを編集
    ```
@@ -161,7 +161,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    ```env
    APP_ENV=production
    APP_DEBUG=false
-   APP_URL=http://3.27.233.206/
+   APP_URL=http://your_ec2_instance_public_ip/
 
    DB_HOST=your_rds_endpoint
    DB_DATABASE=your_production_db
