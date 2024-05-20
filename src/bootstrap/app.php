@@ -15,6 +15,18 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+$environment = getenv('APP_ENV') ?: 'production';
+switch ($environment) {
+    case 'development':
+        $app->loadEnvironmentFrom(base_path('env/.env.dev'));
+        break;
+
+    case 'production':
+    default:
+        $app->loadEnvironmentFrom(base_path('env/.env.prod'));
+        break;
+}
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
