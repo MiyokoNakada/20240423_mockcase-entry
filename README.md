@@ -7,7 +7,7 @@
 <br>
 
 ## URL
-- URL：http://3.27.233.206/
+- URL：http://3.27.233.206/  
   （上記URLでログイン後にトップページに遷移します)
 - 開発環境：http://localhost/
 - phpMyAdmin:：http://localhost:8080/
@@ -104,7 +104,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
 #### 前提条件
 - AWS EC2 インスタンス
 - AWS RDS データベース
-<br>
+
 #### 手順
 1. EC2 インスタンスを作成し、必要なソフトウェアをインストール
   - Docker
