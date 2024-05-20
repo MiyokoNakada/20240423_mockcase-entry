@@ -192,7 +192,8 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    php artisan key:generate
    ```
 10. マイグレーションの実行  
-   ```php
-   php artisan migrate
-   ```
+     ```php
+     php artisan migrate
+     ```
+
 
