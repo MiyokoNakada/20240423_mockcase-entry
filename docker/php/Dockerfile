@@ -17,6 +17,6 @@ RUN apt update && apt install -y nano
 COPY crontab /etc/cron.d/laravel-scheduler
 RUN chmod 644 /etc/cron.d/laravel-scheduler
 RUN crontab /etc/cron.d/laravel-scheduler
-RUN service cron start
+CMD ["cron", "-f"]
 
 WORKDIR /var/www

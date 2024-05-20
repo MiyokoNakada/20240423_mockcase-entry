@@ -62,12 +62,11 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    git clone git@github.com:MiyokoNakada/20240423_mockcase-entry.git
    cd 20240423_mockcase-entry
    ```
-2. 環境に合わせて `docker-compose.yml` ファイルと `nginx/default.conf` ファイルを編集
-3. Docker コンテナをビルドして起動
+2. Docker コンテナをビルドして起動
    ```sh
-   docker-compose up -d --build
+   docker-compose -f docker-compose.dev.yml up --build
    ```
-4. .env ファイルを作成し、必要な環境変数を設定
+3. .env ファイルを作成し、必要な環境変数を設定
 
    ```sh
    cp .env.example .env
@@ -94,18 +93,18 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    ```
    ※メールに関する設定項目もそれぞれの環境に合わせて変更
 
-5. PHP コンテナにログイン後、composer のインストール
+4. PHP コンテナにログイン後、composer のインストール
    ```sh
    docker-compose exec php bash
    ```
    ```php
    composer install
    ```
-6. アプリケーションキーの作成
+5. アプリケーションキーの作成
    ```php
    php artisan key:generate
    ```
-7. マイグレーションの実行
+6. マイグレーションの実行
    ```php
    php artisan migrate
    ```
@@ -131,10 +130,13 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    git clone git@github.com:MiyokoNakada/20240423_mockcase-entry.git
    cd 20240423_mockcase-entry
    ```
-4. 環境に合わせて `docker-compose.yml` ファイル、`nginx/default.conf` ファイルを編集
+4. `nginx/default.conf` ファイルを編集
+    ```nginx/default.conf
+    server_name 3.27.233.206;
+    ```
 5. Docker コンテナをビルドして起動
    ```sh
-   docker-compose up -d --build
+   docker-compose -f docker-compose.prod.yml up --build -d
    ```
 6. .env ファイルを作成し、必要な環境変数を設定
 
