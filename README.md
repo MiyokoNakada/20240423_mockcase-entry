@@ -43,68 +43,126 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
 
 ## 環境構築
 ### 開発環境のセットアップ
-
-
-### 本番環境のセットアップ
 #### 前提条件
 - Docker
 - Docker Compose
 
 #### 手順
-1. リポジトリをクローン：
+1. リポジトリをクローン
    ```
    git clone git@github.com:MiyokoNakada/20240423_mockcase-entry.git
    ```
-2. .env ファイルを作成し、必要な環境変数を設定：
-  ```
-  cp .env.example .env
-  ```
-3. .env ファイルを編集して以下の内容を追加・修正
-  ```
-  APP_ENV=local
-  DB_HOST=mysql
-  DB_DATABASE=your_local_db
-  DB_USERNAME=root
-  DB_PASSWORD=secret
-  ```
-4. それぞれのPCに合わせてdocker-compose.ymlファイル、を編集してください。
-5. Docker コンテナをビルドして起動：
-  ```
-  docker-compose up -d --build
-  ```
+2. 環境に合わせてdocker-compose.ymlファイル、nginx/default.confファイルを編集
+3. Docker コンテナをビルドして起動
+    ```
+    docker-compose up -d --build
+    ```
+4. .env ファイルを作成し、必要な環境変数を設定
+    ```
+    cp .env.example .env
+    ```
+    ```
+    APP_ENV=development
+    APP_DEBUG=true
+    APP_URL=http://localhost
+    ```
+    ```
+    DB_HOST=mysql
+    DB_DATABASE=laravel_db
+    DB_USERNAME=laravel_user
+    DB_PASSWORD=laravel_pass
+    ```
+    ※メールに関する設定項目もそれぞれの環境に合わせて変更
+    ```
+    MAIL_MAILER=smtp
+    MAIL_HOST=your_email_host
+    MAIL_PORT=2525
+    MAIL_USERNAME=your_username
+    MAIL_PASSWORD=your_password
+    MAIL_ENCRYPTION=null
+    MAIL_FROM_ADDRESS="email_verification@atte.com"
+    MAIL_FROM_NAME="Atte"
+    ```
+   
+6. PHPコンテナにログイン後、composerのインストール
+    ```
+    docker-compose exec php bash
+    ```
+    ```
+    composer install
+    ```
+7. アプリケーションキーの作成
+    ```
+    php artisan key:generate
+    ```
+8. マイグレーションの実行
+    ```
+    php artisan migrate
+    ```
 
-**Dockerビルド**
-1. `git clone git@github.com:MiyokoNakada/20240423_mockcase-entry.git`
-2. DockerDesktopアプリを立ち上げる
-3. `docker-compose up -d --build`
+### 本番環境のセットアップ
+#### 前提条件
+- AWS EC2 インスタンス
+- AWS RDS データベース
+<br>
+#### 手順
+1. EC2 インスタンスを作成し、必要なソフトウェアをインストール
+  - Docker
+  - Docker-compose
+  - Git
+2. RDS データーベースを作成し、作成したEC2に接続
+3. リポジトリをクローン
+   ```
+   git clone git@github.com:MiyokoNakada/20240423_mockcase-entry.git
+   ```
+4. 環境に合わせてdocker-compose.ymlファイル、nginx/default.confファイルを編集
+5. Docker コンテナをビルドして起動
+    ```
+    docker-compose up -d --build
+    ```
+6. .env ファイルを作成し、必要な環境変数を設定
+    ```
+    cp .env.example .env
+    ```
+    ```
+    APP_ENV=production
+    APP_DEBUG=false
+    APP_URL=http://3.27.233.206/
+    ```
+    ```
+    DB_HOST=your_rds_endpoint
+    DB_DATABASE=your_production_db
+    DB_USERNAME=your_db_user
+    DB_PASSWORD=your_db_password
+    ```
+    ※メールに関する設定項目もそれぞれの環境に合わせて変更
+    ```
+    MAIL_MAILER=smtp
+    MAIL_HOST=your_email_host
+    MAIL_PORT=2525
+    MAIL_USERNAME=your_username
+    MAIL_PASSWORD=your_password
+    MAIL_ENCRYPTION=null
+    MAIL_FROM_ADDRESS="email_verification@atte.com"
+    MAIL_FROM_NAME="Atte"
+    ```
+       
+6. PHPコンテナにログイン後、composerのインストール
+    ```
+    docker-compose exec php bash
+    ```
+    ```
+    composer install
+    ```
+7. アプリケーションキーの作成
+    ```
+    php artisan key:generate
+    ```
+8. マイグレーションの実行
+    ```
+    php artisan migrate
+    ```
 
-  
 
-**Laravel環境構築**
-1. `docker-compose exec php bash`
-2. `composer install`
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-4. .envに以下の環境変数を追加
-``` text
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-```
-5. アプリケーションキーの作成
-``` bash
-php artisan key:generate
-```
 
-6. マイグレーションの実行
-``` bash
-php artisan migrate
-```
-
-7. シーディングの実行
-``` bash
-php artisan migrate
-```
 
