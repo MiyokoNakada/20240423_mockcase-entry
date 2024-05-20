@@ -84,3 +84,19 @@
     background-color: rgb(80, 110, 200);
     color: #FFF;
 }
+
+
+/* メディアクリエ */
+@media screen and (max-width: 768px) {
+    .employee-table__header {
+        font-size: 10px;
+        padding-left: 10px;
+    }
+    .employee-table__row {
+        height: 40px;
+    }
+    .employee-table__item {
+        font-size: 10px;
+        padding-left: 10px;
+    }
+}
