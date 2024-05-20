@@ -15,17 +15,17 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-$environment = getenv('APP_ENV') ?: 'production';
-switch ($environment) {
-    case 'development':
-        $app->loadEnvironmentFrom(base_path('env/.env.dev'));
-        break;
+// switch ($_SERVER['HTTP_HOST'] ?? 'localhost') {
+//     // 開発環境
+//     case 'localhost':
+//         $app->loadEnvironmentFrom('.env.dev');
+//         break;
 
-    case 'production':
-    default:
-        $app->loadEnvironmentFrom(base_path('env/.env.prod'));
-        break;
-}
+//     // 本番環境
+//     case 'prod.maydomain.com':
+//         $app->loadEnvironmentFrom('.env.prod');
+//         break;
+// }
 
 /*
 |--------------------------------------------------------------------------
