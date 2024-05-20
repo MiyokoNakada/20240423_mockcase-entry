@@ -1,7 +1,3 @@
-/* * {
-    border: salmon solid 0.5px;
-} */
-
 html,
 body {
     height: 100%;
@@ -10,7 +6,6 @@ body {
 main {
     background-color: rgb(240, 240, 240);
 }
-
 
 /* ヘッダー */
 .header {
@@ -39,7 +34,7 @@ main {
     font-weight: bold;
 }
 
-.header-navi__link{
+.header-navi__link {
     text-decoration: none;
     cursor: pointer;
 }
@@ -51,7 +46,18 @@ main {
     background-color: white;
     cursor: pointer;
 }
-
+@media screen and (max-width: 768px) {
+    .header-ttl {
+        font-size: 16px;
+    }
+    .header-navi__list li {
+        font-size: 10px;
+        margin-left: 10px;
+    }
+    .header-nav__button {
+        font-size: 10px;
+    }
+}
 
 /* フッター */
 footer {

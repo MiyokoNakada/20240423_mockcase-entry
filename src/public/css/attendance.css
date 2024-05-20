@@ -8,18 +8,18 @@
 
 /* title */
 .attendance-ttl {
-    padding: 20px 0 ;
+    padding: 20px 0;
 }
 
 .attendance-ttl__text {
     text-align: center;
     font-size: 24px;
 }
-.attendance-ttl__text form{
+.attendance-ttl__text form {
     display: inline;
 }
 
-.attendance-ttl__text button{
+.attendance-ttl__text button {
     width: 40px;
     height: 30px;
     font-size: large;
@@ -30,7 +30,6 @@
     margin: 0 20px;
     cursor: pointer;
 }
-
 
 /* attendance table */
 .attendance-table {
@@ -59,7 +58,7 @@
     padding-left: 50px;
 }
 
-.attendance-table__item span{
+.attendance-table__item span {
     font-weight: bold;
 }
 
@@ -72,7 +71,7 @@
 }
 
 .pagination li:not(.active) {
-    border: rgb(240, 240, 240) solid 0.5px ;
+    border: rgb(240, 240, 240) solid 0.5px;
     padding: 8px 15px;
     font-size: 16px;
     background-color: white;
@@ -94,8 +93,23 @@
 
 .active {
     padding: 8px 15px;
-        font-size: 16px;
+    font-size: 16px;
     border: rgb(240, 240, 240) solid 0.5px;
     background-color: rgb(80, 110, 200);
-    color: #FFF;
+    color: #fff;
+}
+
+/* メディアクリエ */
+@media screen and (max-width: 768px) {
+    .attendance-table__header {
+        font-size: 10px;
+        padding-left: 10px;
+    }
+    .attendance-table__row {
+        height: 40px;
+    }
+    .attendance-table__item {
+        font-size: 10px;
+        padding-left: 10px;
+    }
 }

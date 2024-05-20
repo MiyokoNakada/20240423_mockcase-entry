@@ -8,14 +8,15 @@
 <br>
 
 ## URL
+
 - 本番環境：http://3.27.233.206/  
-  （上記URLでログイン後にトップページに遷移します)
+  （上記 URL でログイン後にトップページに遷移します)
 - 開発環境：http://localhost/
 - phpMyAdmin：http://localhost:8080/
-<br>
-
+  <br>
 
 ## 関連レポジトリ
+
 https://github.com/MiyokoNakada/20240423_mockcase-entry/  
 <br>
 
@@ -91,6 +92,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    MAIL_FROM_ADDRESS="email_verification@atte.com"
    MAIL_FROM_NAME="Atte"
    ```
+
    ※メールに関する設定項目もそれぞれの環境に合わせて変更
 
 4. PHP コンテナにログイン後、composer のインストール
@@ -131,21 +133,21 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    cd 20240423_mockcase-entry
    ```
 4. `docker/nginx/default.conf` ファイルを編集
-    ```
-    server_name 3.27.233.206;
-    ```
+   ```
+   server_name 3.27.233.206;
+   ```
 5. `docker-compose.prod.yml` ファイルを編集
-    ```
-    phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=RDS_endpoint
-      - PMA_USER=RDS_user
-      - PMA_PASSWORD=RDS_password
-    ports:
-      - 8080:80
-    ```
+   ```
+   phpmyadmin:
+   image: phpmyadmin/phpmyadmin
+   environment:
+     - PMA_ARBITRARY=1
+     - PMA_HOST=RDS_endpoint
+     - PMA_USER=RDS_user
+     - PMA_PASSWORD=RDS_password
+   ports:
+     - 8080:80
+   ```
 6. Docker コンテナをビルドして起動
    ```sh
    docker-compose -f docker-compose.prod.yml up --build -d
@@ -175,6 +177,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    MAIL_FROM_ADDRESS="email_verification@atte.com"
    MAIL_FROM_NAME="Atte"
    ```
+
    ※メールに関する設定項目もそれぞれの環境に合わせて変更
 
 8. PHP コンテナにログイン後、composer のインストール
@@ -188,7 +191,8 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    ```php
    php artisan key:generate
    ```
-10. マイグレーションの実行
+10. マイグレーションの実行  
    ```php
    php artisan migrate
    ```
+

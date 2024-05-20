@@ -101,5 +101,31 @@
     font-size: 16px;
     border: rgb(240, 240, 240) solid 0.5px;
     background-color: rgb(80, 110, 200);
-    color: #FFF;
+    color: #fff;
+}
+
+/* メディアクリエ */
+@media screen and (max-width: 768px) {
+    .employee-table {
+        width: 60vw;
+    }
+    .employee-table__header {
+        font-size: 10px;
+        padding-left: 10px;
+    }
+    .employee-table__row {
+        height: 40px;
+    }
+    .employee-table__item {
+        padding: 0 10px;
+        height: 40px;
+    }
+    .employee-table__item-text {
+        font-size: 10px;
+    }
+    .employee-table__item-btn {
+        height: 30px;
+        width: 80px;
+        font-size: 10px;
+    }
 }
