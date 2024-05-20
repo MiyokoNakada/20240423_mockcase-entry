@@ -64,12 +64,12 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
    ```
 2. Docker コンテナをビルドして起動
    ```sh
-   docker-compose -f docker-compose.dev.yml up --build
+   docker-compose -f docker-compose.dev.yml up --build -d
    ```
 3. .env ファイルを作成し、必要な環境変数を設定
 
    ```sh
-   cp .env.example .env
+   cp src/.env.example src/.env
    ```
 
    ```env
@@ -95,7 +95,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
 
 4. PHP コンテナにログイン後、composer のインストール
    ```sh
-   docker-compose exec php bash
+   docker-compose -f docker-compose.dev.yml exec php bash
    ```
    ```php
    composer install
@@ -141,7 +141,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
 6. .env ファイルを作成し、必要な環境変数を設定
 
    ```sh
-   cp .env.example .env
+   cp src/.env.example src/.env
    ```
 
    ```env
@@ -167,7 +167,7 @@ https://github.com/MiyokoNakada/20240423_mockcase-entry/
 
 7. PHP コンテナにログイン後、composer のインストール
    ```sh
-   docker-compose exec php bash
+   docker-compose -f docker-compose.prod.yml exec php bash
    ```
    ```php
    composer install
